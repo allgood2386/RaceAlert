@@ -1,8 +1,15 @@
 <header>
-  <h1>Todo List</h1>
+  <login-buttons></login-buttons>
+  <h1>Races List</h1>
 </header>
+<form class="new-race" ng-submit="$ctrl.addRace($ctrl.newRace)">
+    <input ng-model="$ctrl.newRace.raceName" type="text" name="text" placeholder="Type to add new Race"/>
+    <input ng-model="$ctrl.newRace.raceDatetime" type="datetime-local" name="raceDatetime" placeholder="new Date()"/>
+  </form>
 <ul>
   <li ng-repeat="race in $ctrl.races">
-    {{race.raceName}}}
+    <button class="delete" ng-click="$ctrl.removeRace(race)">&times;</button>
+    {{ race.raceName }}
+    {{ race.raceDatetime }}
   </li>
 </ul>

@@ -10,9 +10,28 @@ class RaceListCtrl {
  
     this.helpers({
       races() {
-        return Races.find({});
+        return Races.find({}, {
+          sort: {
+            createdAt: -1
+          }
+        });
       }
     })
+  }
+
+  addRace(newRace) {
+    console.log(newRace);
+      Races.insert({
+        raceName: newRace.raceName,
+        raceDatetime: newRace.raceDatetime
+      });
+  
+      // Clear form
+      this.newRace = '';
+  }
+
+  removeRace(race) {
+    Races.remove(race._id);
   }
 }
  
